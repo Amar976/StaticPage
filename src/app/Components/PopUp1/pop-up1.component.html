@@ -22,7 +22,7 @@
       <th mat-header-cell *matHeaderCellDef mat-sort-header> ClaimId </th>
       <td mat-cell *matCellDef="let row"> {{row.ClaimNum}} </td>
     </ng-container>
-    
+
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
       <td mat-cell *matCellDef="let row"> {{row.email}} </td>
@@ -72,7 +72,6 @@
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Balance </th>
       <td mat-cell *matCellDef="let row"> {{row.Balance}} </td>
     </ng-container>
-    
 
     <ng-container matColumnDef="claimStatus">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> claimStatus </th>
@@ -82,11 +81,15 @@
     <ng-container matColumnDef="Action">
       <th mat-header-cell *matHeaderCellDef> Action </th>
       <td mat-cell *matCellDef="let row ">
-        <button mat-icon-button color="primary" (click)="openDialog(row.ClaimNum,row.email, row.ClaimAmt,row.Balance)" title="Edit Contact">
-          <mat-icon>edit</mat-icon>
-        </button>
+        <div *ngIf="row.claimStatus != 'Denied' && row.claimStatus != 'Settled'; else elseBlock">
+          <button mat-icon-button color="primary" (click)="openDialog(row.ClaimNum,row.email, row.ClaimAmt,row.Balance)"
+            title="Edit Status">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </div>
+        <ng-template #elseBlock><button mat-icon-button color="primary"
+            [disabled]="true"><mat-icon>edit</mat-icon></button></ng-template>
       </td>
-
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true;"></tr>

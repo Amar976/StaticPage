@@ -31,7 +31,7 @@
             <mat-form-field class="full-width">
               <mat-label>Claim Number</mat-label>
               <input class="auto" matInput placeholder="Claim Number" formControlName="ClaimNum" required>
-            </mat-form-field>            
+            </mat-form-field>
             <br />
             <mat-form-field class="full-width">
               <mat-label>Agency Number</mat-label>
@@ -52,11 +52,10 @@
             <br />
             <mat-form-field class="full-width" appearance="fill">
               <mat-label>Patient Name</mat-label>
-              <!---<input matInput placeholder="Patient name" formControlName="Patientname" required>-->
-              <mat-select formControlName="Patientname" >
-                <mat-option *ngFor="let data of dependantsData" [value]="data" >{{data}}</mat-option>
+              <mat-select formControlName="Patientname">
+                <mat-option *ngFor="let data of dependantsData" [value]="data">{{data}}</mat-option>
               </mat-select>
-            </mat-form-field>            
+            </mat-form-field>
             <br />
             <mat-form-field class="full-width">
               <mat-label>Patient ID</mat-label>
@@ -77,7 +76,8 @@
             <br />
             <mat-form-field class="full-width">
               <mat-label>Email ID</mat-label>
-              <input class="auto" matInput placeholder="Patient email" formControlName="Patientemail" required [value]="this.email">
+              <input class="auto" matInput placeholder="Patient email" formControlName="Patientemail" required
+                [value]="this.email">
             </mat-form-field>
             <div *ngIf="firstFormGroup.get('Patientemail')?.touched &&  firstFormGroup.get('Patientemail')?.invalid"
               class="alert alert-info">
@@ -94,7 +94,7 @@
               <mat-label>Contact Number</mat-label>
               <input class="auto" matInput placeholder="Patient contact" formControlName="Patientcontact" maxlength="10"
                 minlength="10" required [value]="this.phone">
-            
+
             </mat-form-field>
             <div *ngIf="firstFormGroup.get('Patientcontact')?.touched &&  firstFormGroup.get('Patientcontact')?.invalid"
               class="alert alert-info">
@@ -233,7 +233,8 @@
             <br />
             <mat-form-field class="full-width">
               <mat-label>Total Coverage amount</mat-label>
-              <input class="auto" matInput placeholder="Coverage" formControlName="Coverage" required value="{{this.coverage | currency : 'INR'}}">
+              <input class="auto" matInput placeholder="Coverage" formControlName="Coverage" required
+                value="{{this.coverage | currency : 'INR'}}">
             </mat-form-field>
             <div *ngIf="thirdFormGroup.get('Coverage')?.touched &&  thirdFormGroup.get('Coverage')?.invalid"
               class="alert alert-info">
@@ -247,7 +248,8 @@
             <br />
             <mat-form-field class="full-width">
               <mat-label>Premium amount</mat-label>
-              <input class="auto" matInput placeholder="Premium" formControlName="Premium" required value="{{this.premium | currency : 'INR'}}">
+              <input class="auto" matInput placeholder="Premium" formControlName="Premium" required
+                value="{{this.premium | currency : 'INR'}}">
             </mat-form-field>
             <div *ngIf="thirdFormGroup.get('Premium')?.touched &&  thirdFormGroup.get('Premium')?.invalid"
               class="alert alert-info">
@@ -259,10 +261,11 @@
               </div>
             </div>
             <br />
-          
+
             <mat-form-field class="full-width">
-              <mat-label>Your Balance after this Claim is processed :{{ this.balance- this.thirdFormGroup.value.ClaimAmt | currency : 'INR'}}</mat-label>
-              <input matInput placeholder="Balance" formControlName="Balance"  required>
+              <mat-label>Your Balance after this Claim is processed :{{ this.balance- this.thirdFormGroup.value.ClaimAmt
+                | currency : 'INR'}}</mat-label>
+              <input matInput placeholder="Balance" formControlName="Balance" required>
             </mat-form-field>
             <div *ngIf="thirdFormGroup.get('Balance')?.touched &&  thirdFormGroup.get('Balance')?.invalid"
               class="alert alert-info">
@@ -320,9 +323,8 @@
             <mat-list-item> <strong>Claim Amount :</strong> {{ this.thirdFormGroup.value.ClaimAmt | currency : 'INR' }}</mat-list-item>
             <mat-list-item> <strong>Total Coverage :</strong> {{ this.coverage | currency : 'INR' }}</mat-list-item>
             <mat-list-item> <strong>Current Balance:</strong> {{ this.balance | currency : 'INR' }}</mat-list-item>
-            <mat-list-item> <strong>Balance After Claim is processed:</strong> {{ this.balance- this.thirdFormGroup.value.ClaimAmt | currency : 'INR' }}</mat-list-item>
-            <mat-list-item> <strong>Payment in Total :</strong> {{ this.thirdFormGroup.value.Payment | currency : 'INR' }}
-            </mat-list-item>
+            <mat-list-item> <strong>Balance After Claim is processed:</strong> {{ this.balance - this.thirdFormGroup.value.ClaimAmt | currency : 'INR' }}</mat-list-item>
+            <mat-list-item> <strong>Payment in Total :</strong> {{ this.thirdFormGroup.value.Payment | currency : 'INR' }}</mat-list-item>
           </mat-list>
 
           <div>

@@ -5,8 +5,7 @@
 <div class="col-md-4 offset-md-4">
     <mat-card class="my-card">
         <mat-card-content>
-            <form class="my-form" name="register-form" [formGroup]="registerForm"
-                (ngSubmit)="Submit()">
+            <form class="my-form" name="register-form" [formGroup]="registerForm" (ngSubmit)="Submit()">
                 <mat-form-field class="full-width">
                     <mat-label>Full Name</mat-label>
                     <input matInput class="form-control" formControlName="userName" placeholder="Name" name="userName"
@@ -131,8 +130,8 @@
                             </div>
                         </div>
                         <mat-form-field>
-                            <input matInput type="number" class="form-control" placeholder="Age"
-                                name="spouseAge" min="18" formControlName="spouseAge" />
+                            <input matInput type="number" class="form-control" placeholder="Age" name="spouseAge"
+                                min="18" formControlName="spouseAge" />
                         </mat-form-field>
                         <div *ngIf="registerForm.get('spouseAge')?.touched &&  registerForm.get('spouseAge')?.invalid"
                             class="alert alert-info">
@@ -180,7 +179,7 @@
                     <button mat-raised-button class="btn btn-success" [disabled]="registerForm.invalid"
                         type="submit">Register <mat-icon>contact_mail</mat-icon></button>
                     <button mat-raised-button class="btn btn-primary" type="reset">Reset <mat-icon>clear</mat-icon>
-                        </button>
+                    </button>
                 </mat-card-actions>
             </form>
         </mat-card-content>
