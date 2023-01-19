@@ -10,6 +10,12 @@ import Swal from 'sweetalert2';
   styleUrls: ['./register-user.component.css']
 })
 export class RegisterUserComponent implements OnInit {
+  
+   disableDates() {
+    let today = new Date();
+    today.setFullYear(today.getFullYear() - 18);
+    return today;
+  }
 
   registerForm = new FormGroup({
     userName: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z ]+[a-zA-Z]+')]),
