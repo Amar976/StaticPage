@@ -5,8 +5,7 @@
 <div class="col-md-4 offset-md-4">
     <mat-card class="my-card">
         <mat-card-content>
-            <form class="my-form" name="register-form" [formGroup]="registerForm"
-                (ngSubmit)="Submit()">
+            <form class="my-form" name="register-form" [formGroup]="registerForm" (ngSubmit)="Submit()">
                 <mat-form-field class="full-width">
                     <mat-label>Full Name</mat-label>
                     <input matInput class="form-control" formControlName="userName" placeholder="Name" name="userName"
@@ -51,7 +50,7 @@
                         and one special char
                     </div>
                 </div>
-                <mat-form-field class="half-width">
+                <mat-form-field class="full-width">
                     <mat-label>Contact</mat-label>
                     <input matInput class="form-control" formControlName="contact" placeholder="Contact" maxlength="10"
                         minlength="10" name="contact" required>
@@ -66,20 +65,6 @@
                     </div>
                     <div *ngIf="registerForm.get('contact')?.hasError('minlength')">
                         Please check the Number of digits in contact number
-                    </div>
-                </div>
-                <mat-form-field class="half-width">
-                    <mat-label>Age</mat-label>
-                    <input matInput class="form-control" type="number" formControlName="age" placeholder="Age" min="18"
-                        name="age" required>
-                </mat-form-field>
-                <div *ngIf="registerForm.get('age')?.touched &&  registerForm.get('age')?.invalid"
-                    class="alert alert-info">
-                    <div *ngIf="registerForm.get('age')?.hasError('min')">
-                        Age should greater or equal to 18
-                    </div>
-                    <div *ngIf="registerForm.get('age')?.hasError('required')">
-                        Please Enter your age
                     </div>
                 </div>
                 <mat-form-field class="full-width">
@@ -104,11 +89,25 @@
 
                 <mat-form-field>
                     <mat-label>Date of Birth</mat-label>
-                    <input matInput [matDatepicker]="picker" class="form-control" formControlName="dob"
-                        placeholder="Choose a date">
+                    <input matInput [matDatepicker]="picker" [max]="disableDates()" (dateChange)="getAge($event)" class="form-control"
+                        formControlName="dob" placeholder="Choose a date" >
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
+                <mat-form-field class="half-width" style="margin-left: 20px;" >
+                    <mat-label>Age</mat-label>
+                    <input matInput class="form-control" [value]="calAge" type="number"  formControlName="age" placeholder="Age" min="18"
+                        name="age" required >
+                </mat-form-field>
+                <div *ngIf="registerForm.get('age')?.touched &&  registerForm.get('age')?.invalid"
+                    class="alert alert-info">
+                    <div *ngIf="registerForm.get('age')?.hasError('min')">
+                        Age should greater or equal to 18
+                    </div>
+                    <div *ngIf="registerForm.get('age')?.hasError('required')">
+                        Please Enter your age
+                    </div>
+                </div>
 
                 <section class="example-section">
                     <label class="example-margin">Married: * </label>
@@ -131,8 +130,8 @@
                             </div>
                         </div>
                         <mat-form-field>
-                            <input matInput type="number" class="form-control" placeholder="Age"
-                                name="spouseAge" min="18" formControlName="spouseAge" />
+                            <input matInput type="number" class="form-control" placeholder="Age" name="spouseAge"
+                                min="18" formControlName="spouseAge" />
                         </mat-form-field>
                         <div *ngIf="registerForm.get('spouseAge')?.touched &&  registerForm.get('spouseAge')?.invalid"
                             class="alert alert-info">
@@ -180,7 +179,7 @@
                     <button mat-raised-button class="btn btn-success" [disabled]="registerForm.invalid"
                         type="submit">Register <mat-icon>contact_mail</mat-icon></button>
                     <button mat-raised-button class="btn btn-primary" type="reset">Reset <mat-icon>clear</mat-icon>
-                        </button>
+                    </button>
                 </mat-card-actions>
             </form>
         </mat-card-content>

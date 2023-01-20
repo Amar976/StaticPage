@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { getLocalStorage } from 'ngx-webstorage/lib/core/nativeStorage';
 import { CustomerService } from 'src/app/Services/customer.service';
 import Swal from 'sweetalert2';
 
@@ -9,7 +10,16 @@ import Swal from 'sweetalert2';
   templateUrl: './register-user.component.html',
   styleUrls: ['./register-user.component.css']
 })
+
 export class RegisterUserComponent implements OnInit {
+  calAge!: number;
+  disabled: boolean = true;
+  disableDates() {
+    let today = new Date();
+    today.setFullYear(today.getFullYear() - 18);
+    return today;
+
+  }
 
   registerForm = new FormGroup({
     userName: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z ]+[a-zA-Z]+')]),
@@ -17,7 +27,8 @@ export class RegisterUserComponent implements OnInit {
     password: new FormControl('', [Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&]).{8,}')]),
     gender: new FormControl('', [Validators.required]),
     contact: new FormControl('', [Validators.required, Validators.pattern('[0-9]*')]),
-    address: new FormControl('', [Validators.required]), age: new FormControl('', [Validators.required, Validators.min(18)]),
+    address: new FormControl('', [Validators.required]),
+    age: new FormControl({ value: '', disabled: true }, [Validators.required, Validators.min(18)]),
     dob: new FormControl('', [Validators.required]), isMarried: new FormControl('', [Validators.required]),
     spouseName: new FormControl('',), spouseAge: new FormControl('',),
     dependents: new FormArray([]),
@@ -26,6 +37,13 @@ export class RegisterUserComponent implements OnInit {
     totalPremium: new FormControl(0)
   })
 
+  getAge(year: any) {
+    console.log(year.value)
+    var timeDiff = Math.abs(Date.now() - new Date(year.value).getTime());
+    this.calAge = Math.floor(timeDiff / (1000 * 3600 * 24) / 365.25);
+    console.log(this.calAge);
+    return this.calAge;
+  }
   constructor(private fb: FormBuilder, private router: Router, private customerService: CustomerService) { }
 
   dependents(): FormArray {

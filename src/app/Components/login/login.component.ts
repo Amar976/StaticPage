@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
 
   login = { email: '', password: '' };
 
-  constructor(private router: Router, private customerService: CustomerService, private dialog: MatDialog,  private local: LocationStrategy) { }
+  constructor(private router: Router, private customerService: CustomerService, private dialog: MatDialog, private local: LocationStrategy) { }
 
   ngOnInit(): void {
     history.pushState(null, 'null', location.href);
@@ -41,9 +41,9 @@ export class LoginComponent implements OnInit {
 
         if (response.data.role == 'user') {
           this.router.navigate(['userView']);
-          localStorage.setItem('role', 'User'); //
+          localStorage.setItem('role', 'User');
         } else if (response.data.role == 'admin') {
-          localStorage.setItem('role', 'Admin'); //   
+          localStorage.setItem('role', 'Admin');
           this.router.navigate(['adminView']);
         } else {
           this.router.navigate(['home']);

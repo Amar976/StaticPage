@@ -13,6 +13,9 @@
         <mat-error *ngIf="premiumData.hasError('required','topUp') && premiumData.get('topUp')?.dirty">
             Please enter top-up amount
         </mat-error>
+        <mat-error *ngIf="premiumData.hasError('min','topUp') && premiumData.get('topUp')?.dirty">
+            Value should be greater than or equal to zero
+        </mat-error>
     </mat-form-field>
     <mat-card-actions>
         <button mat-raised-button class="btn btn-success" [disabled]="premiumData.invalid" type="submit"
