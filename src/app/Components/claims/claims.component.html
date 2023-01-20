@@ -142,10 +142,10 @@
             <div *ngIf="secondFormGroup.get('EndDate')?.touched &&  secondFormGroup.get('EndDate')?.invalid"
               class="alert alert-info">
               <div *ngIf="secondFormGroup.get('EndDate')?.hasError('required')">
-                Please Enter Start Date
+                Please Enter End Date
               </div>
               <div *ngIf="secondFormGroup.get('EndDate')?.hasError('pattern')">
-                Please Enter Valid Start Date
+                Please Enter Valid End Date
               </div>
             </div>
             <br />
@@ -233,8 +233,7 @@
             <br />
             <mat-form-field class="full-width">
               <mat-label>Total Coverage amount</mat-label>
-              <input class="auto" matInput placeholder="Coverage" formControlName="Coverage" required
-                value="{{this.coverage | currency : 'INR'}}">
+              <input class="auto" matInput placeholder="Coverage" formControlName="Coverage" required value="{{this.coverage | currency : 'INR'}}">
             </mat-form-field>
             <div *ngIf="thirdFormGroup.get('Coverage')?.touched &&  thirdFormGroup.get('Coverage')?.invalid"
               class="alert alert-info">
@@ -323,8 +322,9 @@
             <mat-list-item> <strong>Claim Amount :</strong> {{ this.thirdFormGroup.value.ClaimAmt | currency : 'INR' }}</mat-list-item>
             <mat-list-item> <strong>Total Coverage :</strong> {{ this.coverage | currency : 'INR' }}</mat-list-item>
             <mat-list-item> <strong>Current Balance:</strong> {{ this.balance | currency : 'INR' }}</mat-list-item>
-            <mat-list-item> <strong>Balance After Claim is processed:</strong> {{ this.balance - this.thirdFormGroup.value.ClaimAmt | currency : 'INR' }}</mat-list-item>
-            <mat-list-item> <strong>Payment in Total :</strong> {{ this.thirdFormGroup.value.Payment | currency : 'INR' }}</mat-list-item>
+            <mat-list-item> <strong>Balance After Claim is processed:</strong> {{ this.balance- this.thirdFormGroup.value.ClaimAmt | currency : 'INR' }}</mat-list-item>
+            <mat-list-item> <strong>Payment in Total :</strong> {{ this.thirdFormGroup.value.Payment | currency : 'INR' }}
+            </mat-list-item>
           </mat-list>
 
           <div>

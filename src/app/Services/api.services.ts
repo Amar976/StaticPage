@@ -9,13 +9,13 @@ import { Router, RouterStateSnapshot, ActivatedRouteSnapshot, RouteConfigLoadEnd
 })
 export class ApiService {
 
-  url = 'http://localhost:3004/admin';
+  url = 'http://20.219.57.205:3004/admin';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient, private router: Router) { }  
 
   registerClaim(claimObj: any): Observable<any> {
-    let url = "http://localhost:3004/claims/registerClaim";
+    let url = "http://20.219.57.205:3004/claims/registerClaim";
     return this.http.put(url, claimObj);
   }
 

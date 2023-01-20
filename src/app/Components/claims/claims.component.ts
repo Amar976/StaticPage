@@ -44,7 +44,7 @@ export class ClaimsComponent implements OnInit {
         this.phone = (depend.contact);
         this.email = depend.email;
         if (depend.isMarried === 'Yes') {
-          this.dependantsData.push(depend.spouseName)
+          this.dependantsData.push(depend.spouseName);
         }
         this.premium = depend.totalPremium;
         this.coverage = depend.totalCoverage;
@@ -55,8 +55,8 @@ export class ClaimsComponent implements OnInit {
           this.dependantsData.push(element.name);
         });
       })
-    })
-
+    })   
+    
     this.firstFormGroup = this._formBuilder.group({
       Patientname: ['', [Validators.required]],
       ClaimNum: [{ value: this.ID, disabled: true }, [Validators.required, Validators.pattern('[0-9]*')]],
