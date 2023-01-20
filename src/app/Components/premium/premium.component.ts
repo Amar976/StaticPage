@@ -19,7 +19,7 @@ export class PremiumComponent implements OnInit {
 
   ngOnInit(): void {
     this.premiumData = this._formBuilder.group({
-      premiumAmt: [ {value: this.moreData, disabled: true}, [Validators.required]],
+      premiumAmt: [ {value: this.moreData, disabled: false}, [Validators.required]],
       topUp: ['', [Validators.required]]
     })
   }

@@ -38,10 +38,10 @@ export class RegisterUserComponent implements OnInit {
   })
 
   getAge(year: any) {
-    console.log(year.value)
+    //console.log(year.value)
     var timeDiff = Math.abs(Date.now() - new Date(year.value).getTime());
     this.calAge = Math.floor(timeDiff / (1000 * 3600 * 24) / 365.25);
-    console.log(this.calAge);
+    //console.log(this.calAge);
     return this.calAge;
   }
   constructor(private fb: FormBuilder, private router: Router, private customerService: CustomerService) { }

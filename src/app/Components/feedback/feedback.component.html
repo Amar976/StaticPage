@@ -42,7 +42,7 @@
 
                             <label for="email" class="">Enter email</label>
                             <input type="text" id="email" name="email" class="form-control" formControlName="email"
-                                placeholder="Email">
+                                placeholder="Email" required>
                             <div *ngIf="feedbackform.get('email')?.touched &&  feedbackform.get('email')?.invalid"
                                 class="alert alert-danger">
                                 <div *ngIf="feedbackform.get('email')?.hasError('required')">
@@ -62,9 +62,9 @@
                                 <label for="rates" class="" required>Do you think our health insurance rates are
                                     reasonable?</label>
                                 <div>
-                                    <input type="radio" ng-model="myVar" name="test" value="Yes" id="radio-a" formControlName="myVar">Not Sure
-                                    <input type="radio" ng-model="myVar" name="test" value="No" id="radio-b" formControlName="myVar">No
-                                    <input type="radio" ng-model="myVar" name="test" value="Not Sure" id="radio-c" formControlName="myVar">Yes
+                                    <input type="radio" ng-model="myVar" name="test" value="Yes" id="radio-a" formControlName="myVar" required>Not Sure
+                                    <input type="radio" ng-model="myVar" name="test" value="No" id="radio-b" formControlName="myVar" required>No
+                                    <input type="radio" ng-model="myVar" name="test" value="Not Sure" id="radio-c" formControlName="myVar" required>Yes
                                 </div>
                             </div>
                         </div>
@@ -102,8 +102,8 @@
                             <div class="md-form mb-0">
                                 <label for="rates" class="">Do you plan to renew your coverage with us?</label>
                                 <div>
-                                    <input type="radio" ng-model="myVariab" name="answer" value="1">No
-                                    <input type="radio" ng-model="myVariab" name="answer" value="2">Yes
+                                    <input type="radio" ng-model="myVariab" name="answer" value="1" formControlName="myVariab">No
+                                    <input type="radio" ng-model="myVariab" name="answer" value="2" formControlName="myVariab">Yes
                                 </div>
                             </div>
                         </div>

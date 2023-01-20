@@ -21,6 +21,7 @@ export class FeedbackComponent implements OnInit {
     myVar: new FormControl('', Validators.required),
     myVari: new FormControl('', Validators.required),
     myVaria: new FormControl('', Validators.required),
+    myVariab: new FormControl('', Validators.required),
     feedback: new FormControl(),
   });
 

@@ -142,10 +142,10 @@
             <div *ngIf="secondFormGroup.get('EndDate')?.touched &&  secondFormGroup.get('EndDate')?.invalid"
               class="alert alert-info">
               <div *ngIf="secondFormGroup.get('EndDate')?.hasError('required')">
-                Please Enter Start Date
+                Please Enter End Date
               </div>
               <div *ngIf="secondFormGroup.get('EndDate')?.hasError('pattern')">
-                Please Enter Valid Start Date
+                Please Enter Valid End Date
               </div>
             </div>
             <br />
