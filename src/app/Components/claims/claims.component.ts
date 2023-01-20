@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup,  FormBuilder,  FormArray,  Validators} from '@angular/forms';
+import {
+  FormGroup,
+  FormBuilder,
+  FormArray,
+  Validators
+} from '@angular/forms';
 import { ApiService } from 'src/app/Services/api.services';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -34,17 +39,22 @@ export class ClaimsComponent implements OnInit {
     this.dependantsData.push(this.local);
 
     this.adminAPIservice.getUserDetails().subscribe((data: any) => {
-      this.source = data;  
+      this.source = data;
       this.source.forEach((depend: any) => {
-        this.phone=(depend.contact);
-        this.email=depend.email;
-      this.premium= depend.totalPremium;
-      this.coverage=depend.totalCoverage;
-      this.balance=depend.totalBalance }) 
-         this.source.forEach((depend: any) => {
-          depend.dependents.forEach((element: any) => {
+        this.phone = (depend.contact);
+        this.email = depend.email;
+        if (depend.isMarried === 'Yes') {
+          this.dependantsData.push(depend.spouseName);
+        }
+        this.premium = depend.totalPremium;
+        this.coverage = depend.totalCoverage;
+        this.balance = depend.totalBalance
+      })
+      this.source.forEach((depend: any) => {
+        depend.dependents.forEach((element: any) => {
           this.dependantsData.push(element.name);
-        });}) 
+        });
+      })
     })   
     
     this.firstFormGroup = this._formBuilder.group({
